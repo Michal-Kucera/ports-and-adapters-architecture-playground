@@ -7,7 +7,6 @@ import org.jmolecules.archunit.JMoleculesDddRules
 
 @AnalyzeClasses(packages = ["com.michalkucera"])
 class HexagonalArchitectureTest {
-
     @ArchTest
     val domainDrivenDesignTest = JMoleculesDddRules.all()
 

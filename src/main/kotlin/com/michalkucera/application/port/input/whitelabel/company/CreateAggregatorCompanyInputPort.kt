@@ -15,7 +15,6 @@ class CreateAggregatorCompanyInputPort(
     private val uuidProviderOutputPort: UuidProviderOutputPort,
     private val localDateTimeProviderOutputPort: LocalDateTimeProviderOutputPort
 ) : CreateAggregatorCompanyUseCase {
-
     override fun createAggregatorCompany(command: Command): AggregatorCompany {
         val whiteLabel = fetchWhiteLabel(command)
         val aggregatorCompany = whiteLabel.addNewAggregatorCompany(
@@ -27,7 +26,5 @@ class CreateAggregatorCompanyInputPort(
         return aggregatorCompany
     }
 
-    private fun fetchWhiteLabel(
-        command: Command
-    ) = fetchWhiteLabelStrategyFactory.getStrategy(command).fetchWhiteLabel()
+    private fun fetchWhiteLabel(command: Command) = fetchWhiteLabelStrategyFactory.getStrategy(command).fetchWhiteLabel()
 }

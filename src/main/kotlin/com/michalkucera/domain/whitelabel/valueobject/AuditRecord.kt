@@ -13,6 +13,5 @@ data class AuditRecord(
 
 @Factory
 object AuditRecordFactory {
-
     fun createdRecord(creationDateTime: LocalDateTime) = AuditRecord(creationDateTime, creationDateTime, null)
 }

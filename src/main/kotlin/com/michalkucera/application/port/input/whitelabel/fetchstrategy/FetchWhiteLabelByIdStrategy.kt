@@ -7,10 +7,8 @@ class FetchWhiteLabelByIdStrategy(
     private val fetchWhiteLabelByIdOutputPort: FetchWhiteLabelByIdOutputPort,
     private val whiteLabelId: WhiteLabelId
 ) : FetchWhiteLabelStrategy {
-
     override fun fetchWhiteLabel() = fetchWhiteLabelByIdOutputPort.fetchWhiteLabelById(whiteLabelId)
         ?: throw WhiteLabelNotFoundException
-
 
     object WhiteLabelNotFoundException : Exception("White label not found")
 }

@@ -27,7 +27,6 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 class CreateResellerCompanyUseCaseTest {
-
     private val whiteLabelDatabase = InMemoryWhiteLabelDatabase()
     private val resellerCompanyDatabase = InMemoryResellerCompanyDatabase()
     private val underTest: CreateResellerCompanyUseCase
@@ -44,7 +43,6 @@ class CreateResellerCompanyUseCaseTest {
 
     @Nested
     inner class SingleWhiteLabelUser {
-
         @Test
         fun `create reseller company for white label`() {
             whiteLabelDatabase += aWhiteLabel()
@@ -70,7 +68,6 @@ class CreateResellerCompanyUseCaseTest {
 
     @Nested
     inner class MultiWhiteLabelUser {
-
         @Test
         fun `create reseller company for white label`() {
             whiteLabelDatabase += aWhiteLabel()

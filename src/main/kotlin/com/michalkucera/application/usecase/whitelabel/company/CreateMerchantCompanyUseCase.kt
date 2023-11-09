@@ -5,14 +5,12 @@ import com.michalkucera.domain.whitelabel.valueobject.ResellerCompanyId
 import com.michalkucera.domain.whitelabel.valueobject.WhiteLabelId
 
 interface CreateMerchantCompanyUseCase {
-
     fun createMerchantCompany(command: Command): MerchantCompany
 
     open class Command(
         open val companyName: String,
         open val resellerCompanyId: ResellerCompanyId
     ) : CreateCompanyCommand() {
-
         data class SingleWhiteLabelUserCommand(
             override val companyName: String,
             override val resellerCompanyId: ResellerCompanyId

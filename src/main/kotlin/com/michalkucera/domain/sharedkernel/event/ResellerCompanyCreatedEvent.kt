@@ -5,5 +5,5 @@ import com.michalkucera.domain.whitelabel.valueobject.WhiteLabelId
 
 data class ResellerCompanyCreatedEvent(
     val resellerCompanyId: ResellerCompanyId,
-    val whiteLabelId: WhiteLabelId,
+    val whiteLabelId: WhiteLabelId
 ) : DomainEvent

@@ -18,7 +18,6 @@ import java.time.LocalDateTime
 class WhiteLabel(
     @Identity val whiteLabelId: WhiteLabelId
 ) {
-
     private val resellerCompanies = mutableSetOf<ResellerCompany>()
     private val aggregatorCompanies = mutableSetOf<AggregatorCompany>()
     private val merchantAccountProfiles = mutableSetOf<MerchantAccountProfile>()
@@ -42,7 +41,9 @@ class WhiteLabel(
 
     fun addExistingResellerCompany(resellerCompany: ResellerCompany) {
         if (resellerCompany.whiteLabelId != whiteLabelId) {
-            throw IllegalArgumentException("Reseller company with ID: [${resellerCompany.resellerCompanyId}] does not belong to a white label with ID: [$whiteLabelId]")
+            throw IllegalArgumentException(
+                "Reseller company with ID: [${resellerCompany.resellerCompanyId}] does not belong to a white label with ID: [$whiteLabelId]"
+            )
         }
 
         resellerCompanies += resellerCompany
@@ -112,6 +113,7 @@ class WhiteLabel(
     fun getAggregatorCompanies() = aggregatorCompanies.toSet()
 
     fun getMerchantAccountProfiles() = merchantAccountProfiles.toSet()
+
     fun getAcquirers() = acquirers.toSet()
 
     fun getProviders() = providers.toSet()

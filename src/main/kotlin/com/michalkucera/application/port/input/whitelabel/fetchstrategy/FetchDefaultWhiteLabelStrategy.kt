@@ -5,6 +5,5 @@ import com.michalkucera.application.port.output.whitelabel.FetchDefaultWhiteLabe
 class FetchDefaultWhiteLabelStrategy(
     private val fetchDefaultWhiteLabelOutputPort: FetchDefaultWhiteLabelOutputPort
 ) : FetchWhiteLabelStrategy {
-
     override fun fetchWhiteLabel() = fetchDefaultWhiteLabelOutputPort.fetchDefaultWhiteLabel()
 }

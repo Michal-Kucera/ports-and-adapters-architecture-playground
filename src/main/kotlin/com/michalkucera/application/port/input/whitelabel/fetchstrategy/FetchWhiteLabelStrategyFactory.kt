@@ -12,9 +12,7 @@ class FetchWhiteLabelStrategyFactory(
     private val fetchWhiteLabelByIdOutputPort: FetchWhiteLabelByIdOutputPort,
     fetchDefaultWhiteLabelOutputPort: FetchDefaultWhiteLabelOutputPort
 ) {
-
     private val fetchDefaultWhiteLabelStrategy = FetchDefaultWhiteLabelStrategy(fetchDefaultWhiteLabelOutputPort)
-
 
     fun <T : CreateCompanyCommand> getStrategy(command: T) = when (command) {
         is CreateMerchantCompanyUseCase.Command.SingleWhiteLabelUserCommand,
@@ -31,7 +29,6 @@ class FetchWhiteLabelStrategyFactory(
         else -> throw UnsupportedOperationException("Command not supported")
     }
 
-    private fun createFetchWhiteLabelByIdStrategy(
-        whiteLabelId: WhiteLabelId
-    ) = FetchWhiteLabelByIdStrategy(fetchWhiteLabelByIdOutputPort, whiteLabelId)
+    private fun createFetchWhiteLabelByIdStrategy(whiteLabelId: WhiteLabelId) =
+        FetchWhiteLabelByIdStrategy(fetchWhiteLabelByIdOutputPort, whiteLabelId)
 }

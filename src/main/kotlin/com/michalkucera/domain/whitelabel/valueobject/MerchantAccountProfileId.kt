@@ -5,4 +5,6 @@ import java.util.UUID
 
 @JvmInline
 @Identifier
-value class MerchantAccountProfileId(val id: UUID)
+value class MerchantAccountProfileId(
+    val id: UUID
+)

@@ -17,7 +17,6 @@ data class ResellerCompany(
     @Association(aggregateType = WhiteLabel::class) val whiteLabelId: WhiteLabelId,
     val auditRecord: AuditRecord
 ) {
-
     private val merchantCompanies = mutableSetOf<MerchantCompany>()
 
     fun addNewMerchantCompany(

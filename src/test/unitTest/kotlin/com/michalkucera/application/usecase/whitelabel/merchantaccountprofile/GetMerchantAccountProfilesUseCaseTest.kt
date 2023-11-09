@@ -17,7 +17,6 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 class GetMerchantAccountProfilesUseCaseTest {
-
     private val merchantAccountProfileDatabase = InMemoryMerchantAccountProfileDatabase()
     private val underTest: GetMerchantAccountProfilesUseCase = GetMerchantAccountProfilesInputPort(
         InMemoryMerchantAccountProfilePersistenceAdapter(merchantAccountProfileDatabase)

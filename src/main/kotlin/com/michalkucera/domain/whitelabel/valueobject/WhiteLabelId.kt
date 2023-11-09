@@ -5,4 +5,6 @@ import java.util.UUID
 
 @JvmInline
 @Identifier
-value class WhiteLabelId(val id: UUID)
+value class WhiteLabelId(
+    val id: UUID
+)

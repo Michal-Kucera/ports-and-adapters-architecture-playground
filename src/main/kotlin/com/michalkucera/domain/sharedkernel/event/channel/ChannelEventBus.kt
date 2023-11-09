@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 class ChannelEventBus {
-
     suspend fun testSharedFlow(): Unit = coroutineScope {
         val mutableSharedFlow = MutableSharedFlow<String>()
         val sharedFlow: SharedFlow<String> = mutableSharedFlow

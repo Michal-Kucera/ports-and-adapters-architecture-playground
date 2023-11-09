@@ -15,19 +15,18 @@ import com.michalkucera.domain.whitelabel.entity.WhiteLabel
 import com.michalkucera.domain.whitelabel.valueobject.AggregatorCompanyId
 import com.michalkucera.domain.whitelabel.valueobject.AuditRecord
 import com.michalkucera.domain.whitelabel.valueobject.WhiteLabelId
-import com.michalkucera.framework.adapter.output.whitelabel.company.InMemoryAggregatorCompanyDatabase
-import com.michalkucera.framework.adapter.output.whitelabel.company.InMemoryAggregatorCompanyPersistenceAdapter
-import com.michalkucera.framework.adapter.output.whitelabel.InMemoryWhiteLabelByIdPersistenceAdapter
-import com.michalkucera.framework.adapter.output.whitelabel.InMemoryWhiteLabelDatabase
 import com.michalkucera.framework.adapter.output.provider.fixed.FixedLocalDateTimeProviderOutputAdapter
 import com.michalkucera.framework.adapter.output.provider.fixed.FixedUuidProviderOutputAdapter
+import com.michalkucera.framework.adapter.output.whitelabel.InMemoryWhiteLabelByIdPersistenceAdapter
+import com.michalkucera.framework.adapter.output.whitelabel.InMemoryWhiteLabelDatabase
+import com.michalkucera.framework.adapter.output.whitelabel.company.InMemoryAggregatorCompanyDatabase
+import com.michalkucera.framework.adapter.output.whitelabel.company.InMemoryAggregatorCompanyPersistenceAdapter
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
 import java.util.UUID
 
 class CreateAggregatorCompanyUseCaseTest {
-
     private val whiteLabelDatabase = InMemoryWhiteLabelDatabase()
     private val aggregatorCompanyDatabase = InMemoryAggregatorCompanyDatabase()
     private val underTest: CreateAggregatorCompanyUseCase
@@ -44,7 +43,6 @@ class CreateAggregatorCompanyUseCaseTest {
 
     @Nested
     inner class SingleWhiteLabelUser {
-
         @Test
         fun `create aggregator company for white label`() {
             whiteLabelDatabase += aWhiteLabel()
@@ -70,7 +68,6 @@ class CreateAggregatorCompanyUseCaseTest {
 
     @Nested
     inner class MultiWhiteLabelUser {
-
         @Test
         fun `create aggregator company for white label`() {
             whiteLabelDatabase += aWhiteLabel()

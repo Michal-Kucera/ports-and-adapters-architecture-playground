@@ -6,6 +6,5 @@ import com.michalkucera.application.usecase.whitelabel.merchantaccountprofile.Ge
 class GetMerchantAccountProfilesInputPort(
     private val fetchMerchantAccountProfilesOutputPort: FetchMerchantAccountProfilesOutputPort
 ) : GetMerchantAccountProfilesUseCase {
-
     override fun getMerchantAccountProfiles() = fetchMerchantAccountProfilesOutputPort.fetchMerchantAccountProfiles()
 }

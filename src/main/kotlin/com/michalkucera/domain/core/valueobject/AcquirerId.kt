@@ -5,4 +5,6 @@ import java.util.UUID
 
 @JvmInline
 @Identifier
-value class AcquirerId(val id: UUID)
+value class AcquirerId(
+    val id: UUID
+)

@@ -6,6 +6,5 @@ import java.util.UUID
 class FixedUuidProviderOutputAdapter(
     private val fixedUuid: UUID
 ) : UuidProviderOutputPort {
-
     override fun getRandomUuid() = fixedUuid
 }

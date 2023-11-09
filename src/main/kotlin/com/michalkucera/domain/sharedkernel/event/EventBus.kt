@@ -1,7 +1,6 @@
 package com.michalkucera.domain.sharedkernel.event
 
 class EventBus<E : Event> {
-
     private val subscribers = mutableSetOf<EventSubscriber<E>>()
 
     fun subscribe(subscriber: EventSubscriber<E>) {

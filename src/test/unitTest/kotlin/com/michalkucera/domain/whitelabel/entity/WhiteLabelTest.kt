@@ -22,10 +22,8 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 class WhiteLabelTest {
-
     @Nested
     inner class ResellerCompany {
-
         @Test
         fun `create a new reseller company`() {
             val whiteLabel = aWhiteLabel()
@@ -50,9 +48,10 @@ class WhiteLabelTest {
                         WhiteLabelId(UUID.fromString("872736e6-c4e7-4feb-846d-292a0deeaec2"))
                     )
                 )
-            }
-                .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("Reseller company with ID: [${aResellerCompanyId()}] does not belong to a white label with ID: [${aWhiteLabelId()}]")
+            }.isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessage(
+                    "Reseller company with ID: [${aResellerCompanyId()}] does not belong to a white label with ID: [${aWhiteLabelId()}]"
+                )
         }
 
         @Test
@@ -66,7 +65,6 @@ class WhiteLabelTest {
 
         @Nested
         inner class MerchantCompany {
-
             @Test
             fun `add a new merchant company to reseller company`() {
                 val whiteLabel = aWhiteLabel()
@@ -96,8 +94,7 @@ class WhiteLabelTest {
                         "PayXpert merchant",
                         LocalDateTime.of(2021, 5, 12, 10, 30)
                     )
-                }
-                    .isInstanceOf(IllegalArgumentException::class.java)
+                }.isInstanceOf(IllegalArgumentException::class.java)
                     .hasMessage("Reseller company with ID: [${aResellerCompanyId()}] not found in white label")
             }
         }
@@ -105,7 +102,6 @@ class WhiteLabelTest {
 
     @Nested
     inner class AggregatorCompany {
-
         @Test
         fun `create a new aggregator company`() {
             val whiteLabel = aWhiteLabel()
@@ -123,7 +119,6 @@ class WhiteLabelTest {
 
     @Nested
     inner class MerchantAccountProfile {
-
         @Test
         fun `add a new merchant account profile to white label`() {
             val whiteLabel = aWhiteLabel()
@@ -174,8 +169,7 @@ class WhiteLabelTest {
                     providerId = null,
                     creationDateTime = LocalDateTime.of(2021, 11, 21, 10, 45)
                 )
-            }
-                .isInstanceOf(IllegalArgumentException::class.java)
+            }.isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage("Acquirer with ID: [${anAcquirerId()}] not found in white label")
         }
 
@@ -208,15 +202,13 @@ class WhiteLabelTest {
                     providerId = aProviderId(),
                     creationDateTime = LocalDateTime.of(2021, 11, 21, 10, 45)
                 )
-            }
-                .isInstanceOf(IllegalArgumentException::class.java)
+            }.isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage("Provider with ID: [${aProviderId()}] not found in white label")
         }
     }
 
     @Nested
     inner class Acquirer {
-
         @Test
         fun `add existing acquirer to white label`() {
             val whiteLabel = aWhiteLabel()
@@ -229,7 +221,6 @@ class WhiteLabelTest {
 
     @Nested
     inner class Provider {
-
         @Test
         fun `add existing provider to white label`() {
             val whiteLabel = aWhiteLabel()
@@ -244,9 +235,7 @@ class WhiteLabelTest {
 
     private fun aWhiteLabelId() = WhiteLabelId(UUID.fromString("550ecc3b-aad8-42e9-86ca-edfd2d244edc"))
 
-    private fun aResellerCompany(
-        whiteLabelId: WhiteLabelId = aWhiteLabelId()
-    ) = ResellerCompany(
+    private fun aResellerCompany(whiteLabelId: WhiteLabelId = aWhiteLabelId()) = ResellerCompany(
         resellerCompanyId = aResellerCompanyId(),
         companyName = "PayXpert reseller",
         whiteLabelId = whiteLabelId,

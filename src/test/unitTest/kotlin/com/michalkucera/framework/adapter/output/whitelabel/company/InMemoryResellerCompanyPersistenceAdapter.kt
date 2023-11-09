@@ -7,14 +7,13 @@ import com.michalkucera.domain.whitelabel.valueobject.ResellerCompanyId
 
 class InMemoryResellerCompanyPersistenceAdapter(
     private val database: InMemoryResellerCompanyDatabase
-) : PersistResellerCompanyOutputPort, FetchResellerCompanyOutputPort {
-
+) : PersistResellerCompanyOutputPort,
+    FetchResellerCompanyOutputPort {
     override fun persistResellerCompany(resellerCompany: ResellerCompany) {
         database.removeIf { it.resellerCompanyId == resellerCompany.resellerCompanyId }
         database += resellerCompany
     }
 
-    override fun fetchResellerCompanyById(
-        resellerCompanyId: ResellerCompanyId
-    ) = database.firstOrNull { it.resellerCompanyId == resellerCompanyId }
+    override fun fetchResellerCompanyById(resellerCompanyId: ResellerCompanyId) =
+        database.firstOrNull { it.resellerCompanyId == resellerCompanyId }
 }

@@ -6,11 +6,9 @@ import com.michalkucera.domain.whitelabel.valueobject.WhiteLabelId
 
 class InMemoryWhiteLabelByIdPersistenceAdapter(
     private val database: InMemoryWhiteLabelDatabase
-) : FetchWhiteLabelByIdOutputPort, FetchDefaultWhiteLabelOutputPort {
-
-    override fun fetchWhiteLabelById(
-        whiteLabelId: WhiteLabelId
-    ) = database.firstOrNull { it.whiteLabelId == whiteLabelId }
+) : FetchWhiteLabelByIdOutputPort,
+    FetchDefaultWhiteLabelOutputPort {
+    override fun fetchWhiteLabelById(whiteLabelId: WhiteLabelId) = database.firstOrNull { it.whiteLabelId == whiteLabelId }
 
     override fun fetchDefaultWhiteLabel() = database.first()
 }

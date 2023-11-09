@@ -9,8 +9,8 @@ import com.michalkucera.application.port.input.whitelabel.company.CreateMerchant
 import com.michalkucera.application.port.input.whitelabel.fetchstrategy.FetchWhiteLabelByIdStrategy.WhiteLabelNotFoundException
 import com.michalkucera.application.port.input.whitelabel.fetchstrategy.FetchWhiteLabelStrategyFactory
 import com.michalkucera.application.usecase.whitelabel.company.CreateMerchantCompanyUseCase.Command.MultiWhiteLabelUserCommand
-import com.michalkucera.application.usecase.whitelabel.company.CreateMerchantCompanyUseCase.ResellerCompanyNotFoundException
 import com.michalkucera.application.usecase.whitelabel.company.CreateMerchantCompanyUseCase.Command.SingleWhiteLabelUserCommand
+import com.michalkucera.application.usecase.whitelabel.company.CreateMerchantCompanyUseCase.ResellerCompanyNotFoundException
 import com.michalkucera.domain.whitelabel.entity.MerchantCompany
 import com.michalkucera.domain.whitelabel.entity.ResellerCompany
 import com.michalkucera.domain.whitelabel.entity.WhiteLabel
@@ -18,21 +18,20 @@ import com.michalkucera.domain.whitelabel.valueobject.AuditRecord
 import com.michalkucera.domain.whitelabel.valueobject.MerchantCompanyId
 import com.michalkucera.domain.whitelabel.valueobject.ResellerCompanyId
 import com.michalkucera.domain.whitelabel.valueobject.WhiteLabelId
+import com.michalkucera.framework.adapter.output.provider.fixed.FixedLocalDateTimeProviderOutputAdapter
+import com.michalkucera.framework.adapter.output.provider.fixed.FixedUuidProviderOutputAdapter
+import com.michalkucera.framework.adapter.output.whitelabel.InMemoryWhiteLabelByIdPersistenceAdapter
+import com.michalkucera.framework.adapter.output.whitelabel.InMemoryWhiteLabelDatabase
 import com.michalkucera.framework.adapter.output.whitelabel.company.InMemoryMerchantCompanyDatabase
 import com.michalkucera.framework.adapter.output.whitelabel.company.InMemoryMerchantCompanyPersistenceAdapter
 import com.michalkucera.framework.adapter.output.whitelabel.company.InMemoryResellerCompanyDatabase
 import com.michalkucera.framework.adapter.output.whitelabel.company.InMemoryResellerCompanyPersistenceAdapter
-import com.michalkucera.framework.adapter.output.whitelabel.InMemoryWhiteLabelByIdPersistenceAdapter
-import com.michalkucera.framework.adapter.output.whitelabel.InMemoryWhiteLabelDatabase
-import com.michalkucera.framework.adapter.output.provider.fixed.FixedLocalDateTimeProviderOutputAdapter
-import com.michalkucera.framework.adapter.output.provider.fixed.FixedUuidProviderOutputAdapter
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
 import java.util.UUID
 
 class CreateMerchantCompanyUseCaseTest {
-
     private val whiteLabelDatabase = InMemoryWhiteLabelDatabase()
     private val resellerCompanyDatabase = InMemoryResellerCompanyDatabase()
     private val merchantCompanyDatabase = InMemoryMerchantCompanyDatabase()
@@ -51,7 +50,6 @@ class CreateMerchantCompanyUseCaseTest {
 
     @Nested
     inner class SingleWhiteLabelUser {
-
         @Test
         fun `create merchant company for default white label and reseller company`() {
             whiteLabelDatabase += aWhiteLabel()
@@ -90,7 +88,6 @@ class CreateMerchantCompanyUseCaseTest {
 
     @Nested
     inner class MultiWhiteLabelUser {
-
         @Test
         fun `create merchant company for white label and reseller company`() {
             whiteLabelDatabase += aWhiteLabel()

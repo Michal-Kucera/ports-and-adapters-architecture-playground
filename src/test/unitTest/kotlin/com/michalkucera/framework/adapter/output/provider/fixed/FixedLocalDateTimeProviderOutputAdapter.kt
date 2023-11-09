@@ -6,6 +6,5 @@ import java.time.LocalDateTime
 class FixedLocalDateTimeProviderOutputAdapter(
     private val fixedLocalDateTime: LocalDateTime
 ) : LocalDateTimeProviderOutputPort {
-
     override fun getCurrentLocalDateTime() = fixedLocalDateTime
 }

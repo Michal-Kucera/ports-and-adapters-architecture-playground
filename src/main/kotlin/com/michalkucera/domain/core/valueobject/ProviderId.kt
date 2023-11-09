@@ -5,4 +5,6 @@ import java.util.UUID
 
 @JvmInline
 @Identifier
-value class ProviderId(val id: UUID)
+value class ProviderId(
+    val id: UUID
+)

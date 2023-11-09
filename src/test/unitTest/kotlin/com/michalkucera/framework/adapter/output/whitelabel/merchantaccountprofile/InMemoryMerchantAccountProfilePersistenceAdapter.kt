@@ -5,6 +5,5 @@ import com.michalkucera.application.port.output.whitelabel.merchantaccountprofil
 class InMemoryMerchantAccountProfilePersistenceAdapter(
     private val database: InMemoryMerchantAccountProfileDatabase
 ) : FetchMerchantAccountProfilesOutputPort {
-
     override fun fetchMerchantAccountProfiles() = database.toList()
 }
