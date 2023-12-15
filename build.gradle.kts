@@ -26,6 +26,8 @@ dependencies {
 
     implementation(platform("org.jmolecules:jmolecules-bom:2023.1.0"))
     implementation("org.jmolecules:jmolecules-ddd")
+    implementation("org.jmolecules:kmolecules-ddd")
+    implementation("org.jmolecules:jmolecules-events")
     implementation("org.jmolecules:jmolecules-hexagonal-architecture")
 }
 
@@ -48,6 +50,7 @@ testing {
                 implementation(sourceSets.main.get().runtimeClasspath)
                 implementation("org.junit.jupiter:junit-jupiter-api")
                 implementation("org.junit.jupiter:junit-jupiter-params")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
                 runtimeOnly("org.junit.jupiter:junit-jupiter-engine")
                 runtimeOnly("org.junit.platform:junit-platform-engine")
             }

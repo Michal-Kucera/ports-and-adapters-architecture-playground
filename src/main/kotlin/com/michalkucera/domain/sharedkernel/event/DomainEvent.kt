@@ -1,3 +1,5 @@
 package com.michalkucera.domain.sharedkernel.event
 
-sealed interface DomainEvent : Event
+import org.jmolecules.event.types.DomainEvent as DomainEventDdd
+
+interface DomainEvent : DomainEventDdd
