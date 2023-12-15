@@ -29,7 +29,7 @@ class DomainEventBus<E : DomainEvent>(
                         domainEventSubscriber.processDomainEvent(domainEvent)
                     }.onFailure { e ->
                         println(
-                            "Subscriber '${domainEventSubscriber::class.simpleName ?: "UNKNOWN"}' couldn't process " +
+                            "Subscriber '${domainEventSubscriber::class.simpleName ?: "anonymous subscriber"}' couldn't process " +
                                 "domain event '${domainEvent::class.simpleName}' due to an exception $e"
                         )
                     }
