@@ -21,6 +21,6 @@ class ApplicationDomainEventPublisher : DomainEventPublisher {
 
     private suspend fun <E : DomainEvent> publishDomainEvent(domainEvent: E) = domainEventBuses
         .filter { it.supportsDomainEvent(domainEvent) }
-        .map { it as DomainEventBus<E> }
+        .filterIsInstance<DomainEventBus<E>>()
         .forEach { it.publish(domainEvent) }
 }
