@@ -1,8 +1,9 @@
 package com.michalkucera.domain.sharedkernel.event
 
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
 
 class DomainEventBus<E : DomainEvent>(
@@ -13,27 +14,24 @@ class DomainEventBus<E : DomainEvent>(
         inline operator fun <reified E : DomainEvent> invoke() = DomainEventBus(E::class)
     }
 
-    private val subscribers = mutableSetOf<DomainEventSubscriber<E>>()
+    private val subscribers = MutableSharedFlow<E>()
 
     fun supportsDomainEvent(domainEvent: DomainEvent): Boolean = domainEventType.java.isAssignableFrom(domainEvent.javaClass)
 
-    fun subscribe(subscriber: DomainEventSubscriber<E>) {
-        subscribers += subscriber
-    }
-
-    suspend fun publish(domainEvent: E) = coroutineScope {
-        subscribers
-            .map { domainEventSubscriber ->
-                async {
-                    runCatching {
-                        domainEventSubscriber.processDomainEvent(domainEvent)
-                    }.onFailure { e ->
-                        println(
-                            "Subscriber '${domainEventSubscriber::class.simpleName ?: "anonymous subscriber"}' couldn't process " +
-                                "domain event '${domainEvent::class.simpleName}' due to an exception $e"
-                        )
-                    }
+    suspend fun registerSubscriber(domainEventSubscriber: DomainEventSubscriber<E>) {
+        GlobalScope.launch(Dispatchers.IO) {
+            subscribers.collect {
+                runCatching {
+                    domainEventSubscriber.processDomainEvent(it)
+                }.onFailure { e ->
+                    println(
+                        "Subscriber '${domainEventSubscriber::class.simpleName ?: "anonymous subscriber"}' couldn't process " +
+                            "domain event '${it::class.simpleName}' due to an exception $e"
+                    )
                 }
             }
-    }.joinAll()
+        }
+    }
+
+    suspend fun publish(domainEvent: E) = subscribers.emit(domainEvent)
 }
